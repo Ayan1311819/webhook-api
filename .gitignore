@@ -1,0 +1,15 @@
+.env
+.env.local
+
+*.db
+*.sqlite
+*.sqlite3
+
+# Python cache
+__pycache__/
+*.pyc
+.pytest_cache/
+/data/  
+
+# Logs
+*.log

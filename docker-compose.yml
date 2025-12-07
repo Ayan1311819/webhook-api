@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=sqlite:////data/app.db
+      - LOG_LEVEL=INFO
+      - WEBHOOK_SECRET=${WEBHOOK_SECRET:-defaultsecret}
+    volumes:
+      - db-data:/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health/live"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+volumes:
+  db-data:
