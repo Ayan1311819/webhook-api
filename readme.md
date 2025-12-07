@@ -12,7 +12,6 @@ cp .env.example .env
 **Using Make (Linux/Mac or Windows with make installed):**
 ```bash
 make up
-```
 
 # Or use Docker Compose directly (recommended for Windows)
 docker compose up -d --build
