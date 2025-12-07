@@ -3,13 +3,16 @@
 A production-ready webhook receiver API with HMAC signature verification, message storage, and Prometheus metrics.
 
 ## Quick Start
-
+```bash
+git clone https://github.com/Ayan1311819/webhook-api.git
+cd webhook-api
+cp .env.example .env
+```
 ### Running the Service
-
 **Using Make (Linux/Mac or Windows with make installed):**
 ```bash
 make up
-``
+```
 
 # Or use Docker Compose directly (recommended for Windows)
 docker compose up -d --build
@@ -66,8 +69,8 @@ Receives webhook messages with HMAC signature verification.
   "text": "Hello"
 }
 ```
-This is how I implemented verification
-
+#This is how I implemented verification
+```bash
 def verify_signature(body: bytes, signature: str) -> bool:
     """Verify HMAC-SHA256 signature"""
     expected = hmac.new(
@@ -81,7 +84,7 @@ def verify_signature(body: bytes, signature: str) -> bool:
     print("Webhook secret:", repr(settings.webhook_secret))
 
     return hmac.compare_digest(expected, signature)
-
+```
 **Responses:**
 - `200` - Message accepted (first time or duplicate)
 - `401` - Invalid/missing signature
